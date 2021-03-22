@@ -1,0 +1,17 @@
+﻿ version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaIllico.Mobile.Pages.UserPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Utilisateur" />
+            <Label Text="Num de tel" />
+            <Label Text="Adresse" />
+            <Label Text="Adresse Mail" />
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Modifier mot de passe" />
+                <Button Text="Modifier les informations" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

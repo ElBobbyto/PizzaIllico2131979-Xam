@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaIllico.Mobile.Pages.HomePage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Image></Image>
+            <StackLayout x:Name="NotIdentified" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="BtnConnexion" Text="Se connecter" Clicked="OnNavigateButtonClicked"/>
+                <Button x:Name="BtnEnregistrement" Text="S'enregistrer" Clicked="OnNavigateButtonClicked"/>
+            </StackLayout>
+            <StackLayout x:Name="Identified" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="BtnCommande" Text="Commander une pizza" Clicked="OnNavigateButtonClicked"/>
+                <Button x:Name="BtnPanier" Text="Mon Panier" Clicked="OnNavigateButtonClicked"/>
+                <Button x:Name="BtnAnciennesCommandes" Text="Mes Commandes" Clicked="OnNavigateButtonClicked"/>
+                <Button x:Name="BtnCompte" Text="Mon Compte" Clicked="OnNavigateButtonClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
