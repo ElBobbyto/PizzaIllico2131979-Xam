@@ -1,7 +1,10 @@
-﻿ version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PizzaIllico.Mobile.Pages.UserPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="PizzaIllico.Mobile.Pages.UserPage"
+        xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+        Title="User">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Utilisateur" />
@@ -9,8 +12,8 @@
             <Label Text="Adresse" />
             <Label Text="Adresse Mail" />
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                <Button Text="Modifier mot de passe" />
-                <Button Text="Modifier les informations" />
+                <Button Text="Modifier mot de passe" Clicked="clickMdp" />
+                <Button Text="Modifier les informations" Clicked="clickModif" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

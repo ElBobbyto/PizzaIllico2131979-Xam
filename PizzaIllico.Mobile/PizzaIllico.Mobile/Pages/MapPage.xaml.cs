@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PizzaIllico.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderListPage : ContentPage
+    public partial class MapPage : ContentPage
     {
-        public OrderListPage()
+        public MapPage()
         {
             InitializeComponent();
         }

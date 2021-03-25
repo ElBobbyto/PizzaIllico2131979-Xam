@@ -10,8 +10,8 @@ namespace PizzaIllico.Mobile.Services
     public interface IPizzaApiService
     {
         Task<Response<List<ShopItem>>> ListShops();
-
         Task<Response<List<PizzaItem>>> ListPizzas(int shopId);
+        Task<Response<List<OrderItem>>> ListOrders();
     }
     
     public class PizzaApiService : IPizzaApiService
@@ -27,10 +27,14 @@ namespace PizzaIllico.Mobile.Services
         {
 	        return await _apiService.Get<Response<List<ShopItem>>>(Urls.LIST_SHOPS);
         }
-
-        public Task<Response<List<PizzaItem>>> ListPizzas(int shopId)
+        public async Task<Response<List<PizzaItem>>> ListPizzas(int shopId)
         {
-            throw new NotImplementedException();
+            return await _apiService.Get<Response<List<PizzaItem>>>(Urls.LIST_PIZZA);
+        }
+        
+        public async Task<Response<List<OrderItem>>> ListOrders()
+        {
+            return await _apiService.Get<Response<List<OrderItem>>>(Urls.LIST_ORDERS);
         }
     }
 }

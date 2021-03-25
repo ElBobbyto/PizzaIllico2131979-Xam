@@ -16,5 +16,13 @@ namespace PizzaIllico.Mobile.Pages
         {
             InitializeComponent();
         }
+        async void clickMdp(object sender, EventArgs eventArgs)
+        {
+            await Navigation.PushAsync(new UserPage());
+        }
+        async void clickModif(object sender, EventArgs eventArgs)
+        {
+            await Navigation.PushAsync(new UserPage());
+        }
     }
 }
