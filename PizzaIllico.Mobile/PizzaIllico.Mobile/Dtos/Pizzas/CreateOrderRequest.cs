@@ -7,5 +7,6 @@ namespace PizzaIllico.Mobile.Dtos.Pizzas
     {
         [JsonProperty("pizza_ids")]
         public List<long> PizzaIds { get; set; }
+
     }
 }

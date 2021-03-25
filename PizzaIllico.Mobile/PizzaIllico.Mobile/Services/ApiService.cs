@@ -9,6 +9,9 @@ namespace PizzaIllico.Mobile.Services
     public interface IApiService
     {
         Task<TResponse> Get<TResponse>(string url);
+        Task<TResponse> Post<TResponse>(string url, string postcontent);
+        Task<TResponse> Put<TResponse>(string url, string putcontent);
+
     }
     
     public class ApiService : IApiService
