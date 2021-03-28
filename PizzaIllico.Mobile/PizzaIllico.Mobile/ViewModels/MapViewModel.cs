@@ -18,7 +18,6 @@ namespace PizzaIllico.Mobile.ViewModels
     {
         private ObservableCollection<ShopItem> _shops;
         public INavigation Navigation { get;}
-        public ICommand SelectedCommand { get; }
         public ObservableCollection<ShopItem> Shops
         {
             get => _shops;
@@ -35,13 +34,7 @@ namespace PizzaIllico.Mobile.ViewModels
         public MapViewModel(INavigation navigation)
         {
             Navigation = navigation;
-            SelectedCommand = new Command<ShopItem>(SelectedAction);
             Map = new Map {MapType = 0, IsShowingUser = true};
-        }
-
-        private async void SelectedAction(ShopItem obj)
-        {
-            await Navigation.PushAsync(new PizzaListPage(obj.Id));
         }
 
         public override async Task OnResume()
@@ -71,7 +64,12 @@ namespace PizzaIllico.Mobile.ViewModels
                     Label = shop.Name,
                     Address = shop.Address,
                     Position = new Position(shop.Latitude,shop.Longitude),
-                    Type = PinType.Place
+                    Type = PinType.Place,
+                    Command = new Command(
+                    async () =>
+                    {
+                        await Navigation.PushAsync(new PizzaListPage(shop.Id));
+                    })
                 });
             }
         }
