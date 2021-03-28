@@ -13,7 +13,6 @@ namespace PizzaIllico.Mobile.Pages
         {
             InitializeComponent();
             BindingContext = new ShopListViewModel(Navigation);
-
         }
     }
 }

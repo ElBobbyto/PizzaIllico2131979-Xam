@@ -62,6 +62,7 @@ namespace PizzaIllico.Mobile.Services
                 Password = password
             };
             string content = JsonConvert.SerializeObject(user);
+            Console.WriteLine("JSON envoyé : "+content);
             return await _apiService.Post<Response<LoginResponse>>(Urls.CREATE_USER,content);
         }
         public async Task<Response<LoginResponse>> Connect(string login, string password, string clientid, string clientsecret)

@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaIllico.Mobile.Pages.ConnexionPage">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Utilisateur:" />
-            <Entry Placeholder="Utilisateur" />
-            <Label Text="Mot de passe:" />
-            <Entry Placeholder="Mot de passe" />
-            <Button Text="Se connecter/s'enregistrer" />
+        <StackLayout >
+            <Entry x:Name="login" Placeholder="Email" />
+            <Entry x:Name="password" IsPassword="True" Placeholder="Mot de passe" />
+            <Button Text="Se connecter" Clicked="OnClickedConnectionButton" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
