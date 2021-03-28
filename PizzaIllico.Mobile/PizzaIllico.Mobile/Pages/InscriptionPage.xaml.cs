@@ -27,8 +27,6 @@ namespace PizzaIllico.Mobile.Pages
         private void OnButtonInscriptionClicked(object sender, EventArgs e)
         {
             UserViewModel.Register(email.Text, firstname.Text, lastname.Text, phone.Text, password.Text);
-
         }
-
     }
 }

@@ -21,7 +21,7 @@ namespace PizzaIllico.Mobile.ViewModels
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
                 throw new Exception();
             }
             Console.WriteLine("Appel HTTP : {response.IsSuccess} ");

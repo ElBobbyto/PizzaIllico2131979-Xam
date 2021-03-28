@@ -10,23 +10,25 @@
                        x:Class="PizzaIllico.Mobile.Pages.MapPage"
                        x:DataType="viewModels:MapViewModel"
                        Title="Map">
-        <Grid>
-            <maps:Map x:Name="Map" MapType="Street" IsShowingUser="True" ItemsSource="{Binding Shops}">
-                <maps:Map.ItemTemplate>
-                    <DataTemplate x:DataType="pizzas:ShopItem">
-                        <controls:BindablePin Address="{Binding Address}" Label="{Binding Name}" >
-                            <controls:BindablePin.Position>
-                                <maps:Position>
-                                    <x:Arguments>
-                                        <x:Double>{Binding Latitude}</x:Double>
-                                        <x:Double>{Binding Longitude}</x:Double>
-                                    </x:Arguments>
-                                </maps:Position>
-                            </controls:BindablePin.Position>
-                        </controls:BindablePin>    
-                    </DataTemplate>
-                </maps:Map.ItemTemplate>
-            </maps:Map>
-        </Grid>
-        
+    <ContentPage.Content>
+        <ContentView Content="{Binding Map}"/>
+    </ContentPage.Content>
+    <!--<Grid>
+        <maps:Map x:Name="Map" MapType="Street" IsShowingUser="True" ItemsSource="{Binding Shops}">
+            <maps:Map.ItemTemplate>
+                <DataTemplate x:DataType="pizzas:ShopItem">
+                    <controls:BindablePin Address="{Binding Address}" Label="{Binding Name}" >
+                        <controls:BindablePin.Position>
+                            <maps:Position>
+                                <x:Arguments>
+                                    <x:Double>{Binding Latitude}</x:Double>
+                                    <x:Double>{Binding Longitude}</x:Double>
+                                </x:Arguments>
+                            </maps:Position>
+                        </controls:BindablePin.Position>
+                    </controls:BindablePin>    
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+    </Grid>-->
 </forms:BaseContentPage>
