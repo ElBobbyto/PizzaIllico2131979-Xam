@@ -14,7 +14,7 @@ namespace PizzaIllico.Mobile.ViewModels
     public class PizzaListViewModel : ViewModelBase
     {
         private ObservableCollection<PizzaItem> _pizzas;
-        private int _currentShop;
+        private long _currentShop;
         
         public ObservableCollection<PizzaItem> Pizzas
         {
@@ -22,21 +22,23 @@ namespace PizzaIllico.Mobile.ViewModels
             set => SetProperty(ref _pizzas, value);
         }
         
-        public int CurrentShop
+        public long CurrentShop
         {
             get => _currentShop;
             set => SetProperty(ref _currentShop, value);
         }
         public ICommand SelectedCommand { get; }
 
-        public PizzaListViewModel()
+        public PizzaListViewModel(long id_shop)
         {
-            SelectedCommand = new Command<PizzaItem>(SelectedAction);
+            CurrentShop = id_shop;
+            this.OnResume();
+            //SelectedCommand = new Command<PizzaItem>(SelectedAction);
         }
 
         private void SelectedAction(PizzaItem obj)
         {
-		    
+		    //Ajout au panier
         }
 
         public override async Task OnResume()

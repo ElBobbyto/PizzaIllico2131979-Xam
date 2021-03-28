@@ -1,3 +1,4 @@
+using PizzaIllico.Mobile.Dtos.Pizzas;
 using PizzaIllico.Mobile.ViewModels;
 using Storm.Mvvm.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,7 +10,7 @@ namespace PizzaIllico.Mobile.Pages
     {
         public ShopListPage()
         {
-            BindingContext = new ShopListViewModel();
+            BindingContext = new ShopListViewModel(Navigation);
             InitializeComponent();
         }
     }

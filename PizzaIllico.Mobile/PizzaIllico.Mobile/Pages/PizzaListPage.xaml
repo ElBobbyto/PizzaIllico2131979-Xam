@@ -6,7 +6,6 @@
              xmlns:pizzas="clr-namespace:PizzaIllico.Mobile.Dtos.Pizzas;assembly=PizzaIllico.Mobile"
              x:Class="PizzaIllico.Mobile.Pages.PizzaListPage"
              x:DataType="viewModels:PizzaListViewModel">
-  
   <ListView ItemsSource="{Binding Pizzas}"
             SelectionMode="None"
   >
@@ -22,8 +21,9 @@
               <Label Text="{Binding Name}"/>
               <Label Text=":"/>
               <Label Text="{Binding Price}"/>
+              <Label Text="$"/>
             </StackLayout>
-            <Label Text="{Binding Description}"/> 
+            <Label Text="{Binding Description}"/>
           </StackLayout>
         </ViewCell>
       </DataTemplate>

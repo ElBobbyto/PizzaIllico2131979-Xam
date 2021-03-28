@@ -7,13 +7,14 @@ using PizzaIllico.Mobile.Dtos.Accounts;
 using PizzaIllico.Mobile.Dtos.Authentications;
 using PizzaIllico.Mobile.Dtos.Pizzas;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace PizzaIllico.Mobile.Services
 {
     public interface IPizzaApiService
     {
         Task<Response<List<ShopItem>>> ListShops();
-        Task<Response<List<PizzaItem>>> ListPizzas(int shopId);
+        Task<Response<List<PizzaItem>>> ListPizzas(long shopId);
         Task<Response<List<OrderItem>>> ListOrders();
         Task<Response<LoginResponse>> Enregistrer(string client_id, string client_secret, string email,
             string first_name, string last_name, string phone_number, string password);
@@ -32,9 +33,9 @@ namespace PizzaIllico.Mobile.Services
         {
 	        return await _apiService.Get<Response<List<ShopItem>>>(Urls.LIST_SHOPS);
         }
-        public async Task<Response<List<PizzaItem>>> ListPizzas(int shopId)
+        public async Task<Response<List<PizzaItem>>> ListPizzas(long shopId)
         {
-            return await _apiService.Get<Response<List<PizzaItem>>>(Urls.LIST_PIZZA);
+            return await _apiService.Get<Response<List<PizzaItem>>>(Urls.LIST_PIZZA.Replace("{shopId}",shopId.ToString()));
         }
         
         public async Task<Response<List<OrderItem>>> ListOrders()

@@ -14,16 +14,14 @@
                   SelectionMode="None"
                   >
             <ListView.Behaviors>
-                <extensions:ListViewItemTappedBehavior Command="{Binding SelectedCommand}"/>
+                <extensions:ListViewItemTappedBehavior Command="{Binding SelectedCommand}" CommandParameter="{Binding .}"/>
             </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:DataType="pizzas:ShopItem">
                         <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding Name}"
-                                    />  
-                            <Label Text="{Binding Address}"
-                                   />
+                            <Label Text="{Binding Name}"/>  
+                            <Label Text="{Binding Address}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
