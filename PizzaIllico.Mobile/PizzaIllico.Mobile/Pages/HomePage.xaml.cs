@@ -50,7 +50,7 @@ namespace PizzaIllico.Mobile.Pages
         }
         async void clickEnregistrement(object sender, EventArgs eventArgs)
         {
-            await Navigation.PushAsync(new UserPage());
+            await Navigation.PushAsync(new InscriptionPage());
         }
         private void clickSwitch(object sender, EventArgs e)
         {

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using PizzaIllico.Mobile.Dtos;
 using PizzaIllico.Mobile.Dtos.Accounts;
 using PizzaIllico.Mobile.Dtos.Authentications;
+using PizzaIllico.Mobile.Dtos.Authentications.Credentials;
 using PizzaIllico.Mobile.Dtos.Pizzas;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -16,8 +17,10 @@ namespace PizzaIllico.Mobile.Services
         Task<Response<List<ShopItem>>> ListShops();
         Task<Response<List<PizzaItem>>> ListPizzas(long shopId);
         Task<Response<List<OrderItem>>> ListOrders();
-        Task<Response<LoginResponse>> Enregistrer(string client_id, string client_secret, string email,
+        Task<Response<LoginResponse>> Register(string client_id, string client_secret, string email,
             string first_name, string last_name, string phone_number, string password);
+
+        Task<Response<LoginResponse>> Connect(string login, string password, string client_id, string client_secret);
     }
     
     public class PizzaApiService : IPizzaApiService
@@ -42,19 +45,44 @@ namespace PizzaIllico.Mobile.Services
         {
             return await _apiService.Get<Response<List<OrderItem>>>(Urls.LIST_ORDERS);
         }
-        public async Task<Response<LoginResponse>> Enregistrer(string client_id, string client_secret, string email, string first_name, string last_name, string phone_number, string password)
+        public async Task<Response<LoginResponse>> Register(string client_id, string client_secret, string email, string first_name, string last_name, string phone_number, string password)       
         {
-            CreateUserRequest orderrequest= new CreateUserRequest();
-            orderrequest.ClientId = client_id;
-            orderrequest.ClientSecret = client_secret;
-            orderrequest.Email = email;
-            orderrequest.FirstName = first_name;
-            orderrequest.LastName = last_name;
-            orderrequest.PhoneNumber = phone_number;
-            orderrequest.Password = password;
-            string content = JsonConvert.SerializeObject(orderrequest);
-            
+            CreateUserRequest user= new CreateUserRequest
+            {
+                ClientId = client_id,
+                ClientSecret = client_secret,
+                Email = email,
+                FirstName = first_name,
+                LastName=last_name,
+                PhoneNumber = phone_number,
+                Password = password
+            };
+            string content = JsonConvert.SerializeObject(user);
             return await _apiService.Post<Response<LoginResponse>>(Urls.CREATE_USER,content);
+        }
+        public async Task<Response<LoginResponse>> Connect(string login, string password, string clientid, string clientsecret)
+        {
+            LoginWithCredentialsRequest log = new LoginWithCredentialsRequest
+            {
+                ClientId = clientid,
+                ClientSecret = clientsecret,
+                Login = login,
+                Password = password
+            };
+            string content = JsonConvert.SerializeObject(log);
+            return await _apiService.Post<Response<LoginResponse>>(Urls.LOGIN_WITH_CREDENTIALS,content);
+        }
+
+        public async Task<Response<LoginResponse>> Refresh(string refreshToken, string clientId, string clientSecret)
+        {
+            RefreshRequest refreshRequest = new RefreshRequest
+            {
+                ClientId = clientId,
+                ClientSecret = clientSecret,
+                RefreshToken = refreshToken
+            };
+            string content = JsonConvert.SerializeObject(refreshRequest);
+            return await _apiService.Post<Response<LoginResponse>>(Urls.REFRESH_TOKEN,content);
         }
     }
 }
