@@ -10,10 +10,10 @@ namespace PizzaIllico.Mobile.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage
     {
-        public MapPage()
+        public MapPage(Position startingposition)
         {
             InitializeComponent();
-            BindingContext = new MapViewModel(Navigation);
+            BindingContext = new MapViewModel(startingposition,Navigation);
         }
     }
 }

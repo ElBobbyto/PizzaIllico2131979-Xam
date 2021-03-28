@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace PizzaIllico.Mobile.Pages
@@ -34,7 +35,8 @@ namespace PizzaIllico.Mobile.Pages
         }
         async void clickMap(object sender, EventArgs eventArgs)
         {
-            await Navigation.PushAsync(new MapPage());
+            var location = await Geolocation.GetLocationAsync();//await
+            await Navigation.PushAsync(new MapPage(new Position(location.Latitude,location.Longitude)));
         }
         async void clickPanier(object sender, EventArgs eventArgs)
         {

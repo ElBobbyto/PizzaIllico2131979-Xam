@@ -9,8 +9,10 @@ using PizzaIllico.Mobile.Dtos.Pizzas;
 using PizzaIllico.Mobile.Pages;
 using PizzaIllico.Mobile.Services;
 using Storm.Mvvm;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Map = Xamarin.Forms.Maps.Map;
 
 namespace PizzaIllico.Mobile.ViewModels
 {
@@ -31,10 +33,10 @@ namespace PizzaIllico.Mobile.ViewModels
             get => _map;
             set => SetProperty(ref _map, value); 
         }
-        public MapViewModel(INavigation navigation)
+        public MapViewModel(Position startingposition,INavigation navigation)
         {
             Navigation = navigation;
-            Map = new Map {MapType = 0, IsShowingUser = true};
+            Map = new Map(MapSpan.FromCenterAndRadius(startingposition, Distance.FromKilometers(50))) {MapType = 0, IsShowingUser = true};
         }
 
         public override async Task OnResume()
@@ -56,6 +58,7 @@ namespace PizzaIllico.Mobile.ViewModels
 
         private void updateMap()
         {
+            
             Map.Pins.Clear();
             foreach (ShopItem shop in Shops)
             {
