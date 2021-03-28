@@ -43,7 +43,7 @@ namespace PizzaIllico.Mobile.Services
         {
 	        //requete post
 	        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, HOST + url);
-	        //request.Headers.Add("accept", "application/json");
+	        //request.Content.Headers.Add("Content-Type", "application/json");
 	        request.Content = new StringContent(postcontent, System.Text.Encoding.UTF8, "application/json");
 	        //réponse
 	        HttpResponseMessage response = await _client.SendAsync(request);
