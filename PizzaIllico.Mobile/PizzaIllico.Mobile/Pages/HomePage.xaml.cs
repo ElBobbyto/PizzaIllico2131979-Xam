@@ -35,7 +35,7 @@ namespace PizzaIllico.Mobile.Pages
         }
         async void clickMap(object sender, EventArgs eventArgs)
         {
-            var location = await Geolocation.GetLocationAsync();//await
+            var location = await Geolocation.GetLocationAsync();
             await Navigation.PushAsync(new MapPage(new Position(location.Latitude,location.Longitude)));
         }
         async void clickPanier(object sender, EventArgs eventArgs)

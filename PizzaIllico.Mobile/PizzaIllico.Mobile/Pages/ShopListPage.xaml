@@ -11,16 +11,21 @@
     <StackLayout>
         <ListView ItemsSource="{Binding Shops}"
                   SelectionMode="None"
+                  HasUnevenRows = "true"
                   >
             <ListView.Behaviors>
                 <extensions:ListViewItemTappedBehavior Command="{Binding SelectedCommand}" CommandParameter="{Binding .}"/>
             </ListView.Behaviors>
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell x:DataType="pizzas:ShopItem">
+                <DataTemplate x:DataType="viewModels:Shop">
+                    <ViewCell x:DataType="viewModels:Shop">
                         <StackLayout Orientation="Vertical">
                             <Label Text="{Binding Name}"/>  
                             <Label Text="{Binding Address}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Distance}"/>
+                                <Label Text="Km"/>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -28,3 +33,11 @@
         </ListView>
     </StackLayout>
 </forms:BaseContentPage>
+<!--<ViewCell x:DataType="viewModels:Shop">
+    <StackLayout Orientation="Vertical">
+        <Label Text="{Binding Name}"/>  
+        <Label Text="{Binding Address}"/>
+        <Label Text="{Binding Distance}"/>
+        <Label Text="km"/>
+    </StackLayout>
+</ViewCell>-->
