@@ -4,8 +4,6 @@
              x:Class="PizzaIllico.Mobile.Pages.HomePage">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Button Text="switch" Clicked="clickSwitch"/>
-            <Image></Image>
             <StackLayout x:Name="NotConnected" HorizontalOptions="Center" VerticalOptions="Center">
                 <Button x:Name="BtnConnexion" Text="Se connecter" Clicked="clickConnexion"/>
                 <Button x:Name="BtnEnregistrement" Text="S'enregistrer" Clicked="clickEnregistrement"/>

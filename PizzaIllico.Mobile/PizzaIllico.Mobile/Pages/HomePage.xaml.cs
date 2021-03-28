@@ -54,11 +54,6 @@ namespace PizzaIllico.Mobile.Pages
         {
             await Navigation.PushAsync(new InscriptionPage());
         }
-        private void clickSwitch(object sender, EventArgs e)
-        {
-            actualiseAffichage();
-            User.Instance.is_connected = !User.Instance.is_connected;
-        }
 
         public  void actualiseAffichage()
         {
