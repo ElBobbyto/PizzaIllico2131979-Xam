@@ -27,12 +27,12 @@ namespace PizzaIllico.Mobile.ViewModels
 		public ShopListViewModel(INavigation navigation)
 		{
 			Navigation = navigation;
-			SelectedCommand = new Command<long>(SelectedAction);
+			SelectedCommand = new Command<Shop>(SelectedAction);
 		}
 
-		private async void SelectedAction(long shopid)
+		private async void SelectedAction(Shop shop)
 		{
-			await Navigation.PushAsync(new PizzaListPage(shopid));
+			await Navigation.PushAsync(new PizzaListPage(shop.Id));
 		}
 
 		public override async Task OnResume()
