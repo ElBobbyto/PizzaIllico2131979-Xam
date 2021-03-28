@@ -45,6 +45,10 @@ namespace PizzaIllico.Mobile.Services
         {
             return await _apiService.Get<Response<List<OrderItem>>>(Urls.LIST_ORDERS);
         }
+        public async Task<Response<UserProfileResponse>> User()
+        {
+            return await _apiService.Get<Response<UserProfileResponse>>(Urls.USER_PROFILE);
+        }
         public async Task<Response<LoginResponse>> Register(string client_id, string client_secret, string email, string first_name, string last_name, string phone_number, string password)       
         {
             CreateUserRequest user= new CreateUserRequest
@@ -84,5 +88,29 @@ namespace PizzaIllico.Mobile.Services
             string content = JsonConvert.SerializeObject(refreshRequest);
             return await _apiService.Post<Response<LoginResponse>>(Urls.REFRESH_TOKEN,content);
         }
+        
+        public async Task<Response> SetPassword(string oldPassword, string newPassword)
+        {
+            SetPasswordRequest setPassword = new SetPasswordRequest
+            {
+                OldPassword = oldPassword,
+                NewPassword = newPassword
+            };
+            string content = JsonConvert.SerializeObject(setPassword);
+            return await _apiService.Put<Response>(Urls.SET_PASSWORD,content);
+        }
+        public async Task<Response> UpdateUser(string email, string firstName, string lastName, string phoneNumber)
+        {
+            SetUserProfileRequest user = new SetUserProfileRequest
+            {
+                Email = email,
+                FirstName = firstName,
+                LastName = lastName,
+                PhoneNumber = phoneNumber
+            };
+            string content = JsonConvert.SerializeObject(user);
+            return await _apiService.Put<Response>(Urls.SET_USER_PROFILE,content);
+        }
+        
     }
 }

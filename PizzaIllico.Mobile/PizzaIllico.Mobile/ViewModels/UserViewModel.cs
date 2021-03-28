@@ -14,28 +14,25 @@ namespace PizzaIllico.Mobile.ViewModels
         public static async void Register(string email, string firstname, string lastname, string phone, string password)
         {
             IPizzaApiService service = DependencyService.Get<IPizzaApiService>();
-            
-                Response<LoginResponse> response;
-                try
-                {
-                    response = await service.Register(clientID, clientSECRET, email, firstname, lastname, phone, password);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw new Exception();
-                }
-
-                Console.WriteLine("Appel HTTP : {response.IsSuccess} ");
-
-                if (response.IsSuccess)
-                {
-                    Console.WriteLine($"Access Token : {response.Data}");
-                }
-                else
-                {
-                    Console.WriteLine($"Error {response.ErrorCode} : {response.ErrorMessage}");
-                }
+            Response<LoginResponse> response; 
+            try 
+            { 
+                response = await service.Register(clientID, clientSECRET, email, firstname, lastname, phone, password);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw new Exception();
+            }
+            Console.WriteLine("Appel HTTP : {response.IsSuccess} ");
+            if (response.IsSuccess)
+            { 
+                Console.WriteLine($"Access Token : {response.Data}");
+            }
+            else
+            { 
+                Console.WriteLine($"Error {response.ErrorCode} : {response.ErrorMessage}");
+            }
         }
     }
 }
