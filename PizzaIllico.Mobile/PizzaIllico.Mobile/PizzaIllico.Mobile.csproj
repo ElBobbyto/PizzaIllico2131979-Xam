@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
         <PackageReference Include="Storm.Mvvm.Forms" Version="2.4.0" />
         <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
         <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
@@ -40,5 +41,11 @@
       <EmbeddedResource Update="Pages\UserPage.xaml">
         <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\..\..\..\..\..\Microsoft\Xamarin\NuGet\xamarin.android.support.compat\28.0.0.3\lib\monoandroid90\Xamarin.Android.Support.Compat.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>

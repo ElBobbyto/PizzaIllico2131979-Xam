@@ -1,12 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PizzaIllico.Mobile.Pages.MapPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+                       xmlns:viewModels="clr-namespace:PizzaIllico.Mobile.ViewModels;assembly=PizzaIllico.Mobile"
+                       xmlns:pizzas="clr-namespace:PizzaIllico.Mobile.Dtos.Pizzas;assembly=PizzaIllico.Mobile"
+                       xmlns:extensions="clr-namespace:PizzaIllico.Mobile.Extensions;assembly=PizzaIllico.Mobile"
+                       xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+                       xmlns:controls="clr-namespace:PizzaIllico.Mobile.Controls;assembly=PizzaIllico.Mobile"
+                       x:Class="PizzaIllico.Mobile.Pages.MapPage"
+                       x:DataType="viewModels:MapViewModel"
+                       Title="Map">
+        <Grid>
+            <maps:Map x:Name="Map" MapType="Street" IsShowingUser="True" ItemsSource="{Binding Shops}">
+                <maps:Map.ItemTemplate>
+                    <DataTemplate x:DataType="pizzas:ShopItem">
+                        <controls:BindablePin Address="{Binding Address}" Label="{Binding Name}" >
+                            <controls:BindablePin.Position>
+                                <maps:Position>
+                                    <x:Arguments>
+                                        <x:Double>{Binding Latitude}</x:Double>
+                                        <x:Double>{Binding Longitude}</x:Double>
+                                    </x:Arguments>
+                                </maps:Position>
+                            </controls:BindablePin.Position>
+                        </controls:BindablePin>    
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+        </Grid>
+        
+</forms:BaseContentPage>

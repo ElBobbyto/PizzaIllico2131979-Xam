@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using PizzaIllico.Mobile.Controls;
+using PizzaIllico.Mobile.Dtos.Pizzas;
+using PizzaIllico.Mobile.ViewModels;
+using Storm.Mvvm.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace PizzaIllico.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MapPage : ContentPage
+    public partial class MapPage
     {
         public MapPage()
         {
             InitializeComponent();
+            BindingContext = new MapViewModel(Navigation);
         }
     }
 }

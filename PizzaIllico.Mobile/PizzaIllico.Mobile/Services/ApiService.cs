@@ -21,12 +21,22 @@ namespace PizzaIllico.Mobile.Services
         
         public async Task<TResponse> Get<TResponse>(string url)
         {
-	        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, HOST + url);
+	        string content = null;
+	        System.Diagnostics.Debug.WriteLine("TEST AFFICHAGE DEBUG");
+	        try
+	        {
+		        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, HOST + url);
 
-	        HttpResponseMessage response = await _client.SendAsync(request);
+		        HttpResponseMessage response = await _client.SendAsync(request);
 
-	        string content = await response.Content.ReadAsStringAsync();
+		        content = await response.Content.ReadAsStringAsync();
 
+		        return JsonConvert.DeserializeObject<TResponse>(content);
+	        }
+	        catch (Exception e)
+	        {
+		        System.Diagnostics.Debug.WriteLine(e.Message);
+	        }
 	        return JsonConvert.DeserializeObject<TResponse>(content);
         }
         public async Task<TResponse> Post<TResponse>(string url, string postcontent)

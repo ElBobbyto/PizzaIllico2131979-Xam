@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using PizzaIllico.Mobile.Pages;
 using PizzaIllico.Mobile.Services;
 using Xamarin.Forms;

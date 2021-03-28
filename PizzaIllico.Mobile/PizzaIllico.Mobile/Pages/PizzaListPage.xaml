@@ -5,7 +5,8 @@
              xmlns:extensions="clr-namespace:PizzaIllico.Mobile.Extensions;assembly=PizzaIllico.Mobile"
              xmlns:pizzas="clr-namespace:PizzaIllico.Mobile.Dtos.Pizzas;assembly=PizzaIllico.Mobile"
              x:Class="PizzaIllico.Mobile.Pages.PizzaListPage"
-             x:DataType="viewModels:PizzaListViewModel">
+             x:DataType="viewModels:PizzaListViewModel"
+             Title="Pizzas">
   <ListView ItemsSource="{Binding Pizzas}"
             SelectionMode="None"
   >
